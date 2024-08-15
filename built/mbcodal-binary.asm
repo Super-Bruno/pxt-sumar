@@ -1,8 +1,8 @@
 ; Interface tables: 0/0 (NaN%)
 ; Virtual methods: 0 / 0
-; generated code sizes (bytes): 2136 (incl. 1424 user, 664 helpers, 12 vtables, 36 lits); src size 0
-; assembly: 1426 lines; density: 356 bytes/stmt; (4 stmts)
-; total bytes: 292952 (55.9% of 512.0k flash with 231336 free)
+; generated code sizes (bytes): 2120 (incl. 1408 user, 664 helpers, 12 vtables, 36 lits); src size 0
+; assembly: 1415 lines; density: 704 bytes/stmt; (2 stmts)
+; total bytes: 292936 (55.9% of 512.0k flash with 231352 free)
 ; peep hole pass: 22 instructions removed and 23 updated
 ; peep hole pass: 1 instructions removed and 0 updated
 ; peep hole pass: 0 instructions removed and 0 updated
@@ -11,9 +11,9 @@
 ; start
     .startaddr 0x47000
     .hex 708E3B92C615A841C49866C975EE5197 ; magic number
-    .hex 0C212C4D4997E0B2 ; hex template hash
+    .hex 900E757CE3AF59B2 ; hex template hash
     .hex 873266330af9dbdb ; replaced in binary by program hash
-    .short 4   ; num. globals
+    .short 3   ; num. globals
     .short 0 ; patched with number of 64 bit words resulting from assembly
     .word _pxt_config_data
     .short 0 ; patched with comm section size
@@ -51,14 +51,6 @@ _main___P1_locals:
     movs r0, #0
     ldr r7, [r6, #0]
     str r0, [r7, #8]
-    @stackempty locals
-    movs r0, #9
-    movs r1, #11
-    mov r7, sp
-    str r7, [r6, #4]
-    bl numops::muls
-    ldr r7, [r6, #0]
-    str r0, [r7, #12]
     @stackempty locals
 .ret.1:
     @stackempty locals

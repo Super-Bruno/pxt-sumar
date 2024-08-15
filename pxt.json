@@ -1,13 +1,26 @@
 {
     "name": "multiplicar",
-    "version": "0.3.2",
-    "description": "Una extensión prueva",
+    "version": "1.0.0",
+    "description": "Mathematical operations extension",
+    "license": "MIT",
     "dependencies": {
-        "core": "*",
-        "microphone": "*"
+        "core": "*"
     },
     "files": [
+        "README.md",
         "main.ts",
-        "test.ts"
-    ]
+        "_locales/en/multiplicar-strings.json",
+        "_locales/en/multiplicar-jsdoc-strings.json",
+        "_locales/es-ES/multiplicar-strings.json",
+        "_locales/es-ES/multiplicar-jsdoc-strings.json"
+    ],
+    "public": true,
+    "targetVersions": {
+        "target": "6.0.17",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
 }
