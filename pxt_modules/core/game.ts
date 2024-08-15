@@ -305,7 +305,7 @@ namespace game {
      * Resumes the game rendering engine
      */
     //% blockId=game_resume block="resume"
-    //% advanced=true blockGap=8 help=game/resume
+    //% advanced=true blockGap=8 help=game/resumeP
     export function resume(): void {
         _paused = false;
         plot();

@@ -705,8 +705,9 @@ declare namespace pins {
      */
     //% help=pins/digital-read-pin weight=30
     //% blockId=device_get_digital_pin block="digital read|pin %name" blockGap=8
-    //% name.shadow=digital_pin shim=pins::digitalReadPin
-    function digitalReadPin(name: int32): int32;
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250" shim=pins::digitalReadPin
+    function digitalReadPin(name: DigitalPin): int32;
 
     /**
      * Set a pin or connector value to either 0 or 1.
@@ -716,8 +717,9 @@ declare namespace pins {
     //% help=pins/digital-write-pin weight=29
     //% blockId=device_set_digital_pin block="digital write|pin %name|to %value"
     //% value.min=0 value.max=1
-    //% name.shadow=digital_pin shim=pins::digitalWritePin
-    function digitalWritePin(name: int32, value: int32): void;
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250" shim=pins::digitalWritePin
+    function digitalWritePin(name: DigitalPin, value: int32): void;
 
     /**
      * Read the connector value as analog, that is, as a value comprised between 0 and 1023.
@@ -725,8 +727,9 @@ declare namespace pins {
      */
     //% help=pins/analog-read-pin weight=25
     //% blockId=device_get_analog_pin block="analog read|pin %name" blockGap="8"
-    //% name.shadow=analog_pin shim=pins::analogReadPin
-    function analogReadPin(name: int32): int32;
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250" shim=pins::analogReadPin
+    function analogReadPin(name: AnalogPin): int32;
 
     /**
      * Set the connector value as analog. Value must be comprised between 0 and 1023.
@@ -736,8 +739,9 @@ declare namespace pins {
     //% help=pins/analog-write-pin weight=24
     //% blockId=device_set_analog_pin block="analog write|pin %name|to %value" blockGap=8
     //% value.min=0 value.max=1023
-    //% name.shadow=analog_pin shim=pins::analogWritePin
-    function analogWritePin(name: int32, value: int32): void;
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250" shim=pins::analogWritePin
+    function analogWritePin(name: AnalogPin, value: int32): void;
 
     /**
      * Configure the pulse-width modulation (PWM) period of the analog output in microseconds.
@@ -747,8 +751,9 @@ declare namespace pins {
      */
     //% help=pins/analog-set-period weight=23 blockGap=8
     //% blockId=device_set_analog_period block="analog set period|pin %pin|to (µs)%micros"
-    //% pin.shadow=analog_pin shim=pins::analogSetPeriod
-    function analogSetPeriod(name: int32, micros: int32): void;
+    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
+    //% pin.fieldOptions.tooltips="false" shim=pins::analogSetPeriod
+    function analogSetPeriod(name: AnalogPin, micros: int32): void;
 
     /**
      * Configure the pin as a digital input and generate an event when the pin is pulsed either high or low.
@@ -757,11 +762,12 @@ declare namespace pins {
      */
     //% help=pins/on-pulsed advanced=true
     //% blockId=pins_on_pulsed block="on|pin %pin|pulsed %pulse"
-    //% pin.shadow=digital_pin
+    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
+    //% pin.fieldOptions.tooltips="false" pin.fieldOptions.width="250"
     //% group="Pulse"
     //% weight=25
     //% blockGap=8 shim=pins::onPulsed
-    function onPulsed(name: int32, pulse: PulseValue, body: () => void): void;
+    function onPulsed(name: DigitalPin, pulse: PulseValue, body: () => void): void;
 
     /**
      * Get the duration of the last pulse in microseconds. This function should be called from a ``onPulsed`` handler.
@@ -782,11 +788,12 @@ declare namespace pins {
     //% blockId="pins_pulse_in" block="pulse in (µs)|pin %name|pulsed %value"
     //% advanced=true
     //% help=pins/pulse-in
-    //% name.shadow=digital_pin
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250"
     //% group="Pulse"
     //% weight=23
     //% blockGap=8 maxDuration.defl=2000000 shim=pins::pulseIn
-    function pulseIn(name: int32, value: PulseValue, maxDuration?: int32): int32;
+    function pulseIn(name: DigitalPin, value: PulseValue, maxDuration?: int32): int32;
 
     /**
      * Write a value to the servo, controlling the shaft accordingly. On a standard servo, this will set the angle of the shaft (in degrees), moving the shaft to that orientation. On a continuous rotation servo, this will set the speed of the servo (with ``0`` being full-speed in one direction, ``180`` being full speed in the other, and a value near ``90`` being no movement).
@@ -797,15 +804,16 @@ declare namespace pins {
     //% blockId=device_set_servo_pin block="servo write|pin %name|to %value" blockGap=8
     //% parts=microservo trackArgs=0
     //% value.min=0 value.max=180
-    //% name.shadow=analog_pin
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250"
     //% group="Servo" shim=pins::servoWritePin
-    function servoWritePin(name: int32, value: int32): void;
+    function servoWritePin(name: AnalogPin, value: int32): void;
 
     /**
      * Specifies that a continuous servo is connected.
      */
     //% shim=pins::servoSetContinuous
-    function servoSetContinuous(name: int32, value: boolean): void;
+    function servoSetContinuous(name: AnalogPin, value: boolean): void;
 
     /**
      * Configure the IO pin as an analog/pwm output and set a pulse width. The period is 20 ms period and the pulse width is set based on the value given in **microseconds** or `1/1000` milliseconds.
@@ -814,9 +822,10 @@ declare namespace pins {
      */
     //% help=pins/servo-set-pulse weight=19
     //% blockId=device_set_servo_pulse block="servo set pulse|pin %value|to (µs) %micros"
-    //% value.shadow=analog_pin
+    //% value.fieldEditor="gridpicker" value.fieldOptions.columns=4
+    //% value.fieldOptions.tooltips="false" value.fieldOptions.width="250"
     //% group="Servo" shim=pins::servoSetPulse
-    function servoSetPulse(name: int32, micros: int32): void;
+    function servoSetPulse(name: AnalogPin, micros: int32): void;
 
     /**
      * Set the pin used when using analog pitch or music.
@@ -824,11 +833,12 @@ declare namespace pins {
      */
     //% blockId=device_analog_set_pitch_pin block="analog set pitch pin %name"
     //% help=pins/analog-set-pitch-pin advanced=true
-    //% name.shadow=analog_pin
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250"
     //% group="Pins"
     //% weight=12
     //% blockGap=8 shim=pins::analogSetPitchPin
-    function analogSetPitchPin(name: int32): void;
+    function analogSetPitchPin(name: AnalogPin): void;
 
     /**
      * Sets the volume on the pitch pin
@@ -867,11 +877,12 @@ declare namespace pins {
      */
     //% help=pins/set-pull advanced=true
     //% blockId=device_set_pull block="set pull|pin %pin|to %pull"
-    //% pin.shadow=digital_pin
+    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
+    //% pin.fieldOptions.tooltips="false" pin.fieldOptions.width="250"
     //% group="Pins"
     //% weight=15
     //% blockGap=8 shim=pins::setPull
-    function setPull(name: int32, pull: PinPullMode): void;
+    function setPull(name: DigitalPin, pull: PinPullMode): void;
 
     /**
      * Configure the events emitted by this pin. Events can be subscribed to
@@ -881,11 +892,12 @@ declare namespace pins {
      */
     //% help=pins/set-events advanced=true
     //% blockId=device_set_pin_events block="set pin %pin|to emit %type|events"
-    //% pin.shadow=digital_pin
+    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
+    //% pin.fieldOptions.tooltips="false" pin.fieldOptions.width="250"
     //% group="Pins"
     //% weight=13
     //% blockGap=8 shim=pins::setEvents
-    function setEvents(name: int32, type: PinEventType): void;
+    function setEvents(name: DigitalPin, type: PinEventType): void;
 
     /**
      * Create a new zero-initialized buffer.
@@ -902,12 +914,13 @@ declare namespace pins {
      */
     //% help=pins/neopixel-matrix-width advanced=true
     //% blockId=pin_neopixel_matrix_width block="neopixel matrix width|pin %pin %width"
-    //% pin.shadow=digital_pin
+    //% pin.fieldEditor="gridpicker" pin.fieldOptions.columns=4
+    //% pin.fieldOptions.tooltips="false" pin.fieldOptions.width="250"
     //% width.min=2
     //% group="Pins"
     //% weight=11
     //% blockGap=8 width.defl=5 shim=pins::setMatrixWidth
-    function setMatrixWidth(pin: int32, width?: int32): void;
+    function setMatrixWidth(pin: DigitalPin, width?: int32): void;
 
     /**
      * Read `size` bytes from a 7-bit I2C `address`.
@@ -969,19 +982,22 @@ declare namespace pins {
      */
     //% help=pins/spi-pins advanced=true
     //% blockId=spi_pins block="spi set pins|MOSI %mosi|MISO %miso|SCK %sck"
-    //% mosi.shadow=digital_pin
-    //% miso.shadow=digital_pin
-    //% sck.shadow=digital_pin
+    //% mosi.fieldEditor="gridpicker" mosi.fieldOptions.columns=4
+    //% mosi.fieldOptions.tooltips="false" mosi.fieldOptions.width="250"
+    //% miso.fieldEditor="gridpicker" miso.fieldOptions.columns=4
+    //% miso.fieldOptions.tooltips="false" miso.fieldOptions.width="250"
+    //% sck.fieldEditor="gridpicker" sck.fieldOptions.columns=4
+    //% sck.fieldOptions.tooltips="false" sck.fieldOptions.width="250"
     //% group="SPI"
     //% blockGap=8
     //% weight=51 shim=pins::spiPins
-    function spiPins(mosi: int32, miso: int32, sck: int32): void;
+    function spiPins(mosi: DigitalPin, miso: DigitalPin, sck: DigitalPin): void;
 
     /**
      * Mounts a push button on the given pin
      */
     //% help=pins/push-button advanced=true shim=pins::pushButton
-    function pushButton(pin: int32): void;
+    function pushButton(pin: DigitalPin): void;
 
     /**
      * Set the pin used when producing sounds and melodies. Default is P0.
@@ -989,10 +1005,11 @@ declare namespace pins {
      */
     //% blockId=pin_set_audio_pin block="set audio pin $name"
     //% help=pins/set-audio-pin
-    //% name.shadow=digital_pin
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldOptions.tooltips="false" name.fieldOptions.width="250"
     //% weight=1
     //% blockGap=8 shim=pins::setAudioPin
-    function setAudioPin(name: int32): void;
+    function setAudioPin(name: AnalogPin): void;
 
     /**
      * Sets whether or not audio will be output using a pin on the edge
@@ -1000,7 +1017,7 @@ declare namespace pins {
      */
     //% blockId=pin_set_audio_pin_enabled
     //% block="set audio pin enabled $enabled"
-    //% weight=0 help=pins/set-audio-pin-enabled shim=pins::setAudioPinEnabled
+    //% weight=0 shim=pins::setAudioPinEnabled
     function setAudioPinEnabled(enabled: boolean): void;
 }
 
