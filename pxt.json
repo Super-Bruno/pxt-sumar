@@ -1,7 +1,7 @@
 {
     "name": "multiplicar",
-    "version": "1.1.2",
-    "description": "Mathematical",
+    "version": "1.9.0",
+    "description": "Esta es una extensión para realizar operaciones matemáticas como multiplicación, división, suma, y resta.",
     "license": "MIT",
     "dependencies": {
         "core": "*"
