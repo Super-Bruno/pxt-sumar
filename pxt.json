@@ -1,6 +1,6 @@
 {
     "name": "multiplicar",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Una extensión para multiplicar dos números",
     "dependencies": {
         "core": "*",
