@@ -1,0 +1,18 @@
+{
+    "name": "multiplicar",
+    "version": "0.0.5",
+    "description": "Una extensión para multiplicar dos números",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "microbit": "github:microbit-foundation/pxt-microbit#v2.2.0-rc6"
+    },
+    "files": [
+        "main.ts",
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "6.0.28",
+        "pxt": "9.0.19"
+    }
+}
