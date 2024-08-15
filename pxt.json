@@ -1,7 +1,7 @@
 {
     "name": "multiplicar",
     "version": "1.1.1",
-    "description": "Mathematical operations extension",
+    "description": "Mathematical",
     "license": "MIT",
     "dependencies": {
         "core": "*"
