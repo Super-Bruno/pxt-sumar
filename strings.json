@@ -10,7 +10,7 @@
         "remainder": "remainder of $a divided by $b",
         "countTo": "count from 1 to $n"
     },
-    "es": {
+    "es-ES": {
         "name": "Multiplicar",
         "description": "Extensión de operaciones matemáticas",
         "multiply": "multiplica $a por $b",
