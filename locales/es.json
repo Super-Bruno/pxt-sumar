@@ -1,0 +1,12 @@
+{
+    "mathops": {
+      "multiply": "multiplicar $a por $b",
+      "divide": "dividir $a entre $b",
+      "add": "sumar $a y $b",
+      "subtract": "restar $b de $a",
+      "square": "cuadrado de $a",
+      "remainder": "residuo de $a dividido por $b",
+      "countTo": "contar del 1 al $n"
+    }
+  }
+  
